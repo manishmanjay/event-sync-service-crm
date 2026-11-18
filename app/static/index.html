@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Sync Service</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Event Sync</h1>
+    <p class="sub">Unified meetings reconciled from the <span class="badge crm">CRM</span> and the
+      <span class="badge cal">Calendar</span>. Click a row to see every field, where it came from, and where the sources disagree.</p>
+  </header>
+
+  <main>
+    <section id="summary" class="cards" aria-label="Summary"></section>
+
+    <section class="controls" aria-label="Filters">
+      <input id="q" type="search" placeholder="Search title, client, owner, location, ID…" autocomplete="off">
+      <div class="seg" id="presence" role="group" aria-label="Source filter">
+        <button data-v="" class="on">All</button>
+        <button data-v="both">In both</button>
+        <button data-v="crm_only">CRM only</button>
+        <button data-v="calendar_only">Calendar only</button>
+      </div>
+      <label><input type="checkbox" id="conflictsOnly"> Conflicts only</label>
+      <label><input type="checkbox" id="warningsOnly"> Data issues only</label>
+      <span id="count" class="muted"></span>
+    </section>
+
+    <table id="meetings">
+      <thead>
+        <tr><th>When</th><th>Meeting</th><th>Client</th><th>Sources</th><th>Status</th><th>Flags</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p id="empty" class="muted" hidden>No meetings match these filters.</p>
+
+    <section id="assumptions" class="notes"></section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
